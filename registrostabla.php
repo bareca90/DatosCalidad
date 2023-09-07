@@ -68,6 +68,7 @@
                         Uniformidad
                 From	vsp_DefectosCalidad 
                 Where	Fecha	=	Convert(Date,GetDate())
+                And		TerminoProceso	=	'N'
                 Order   By      fecha       ,
                                 Maquina     , 
                                 NoIngreso   ,
