@@ -24,7 +24,7 @@
             </div>
             <div class="contenido_titulo">
                 <h2 class="titulo_principal">
-                   <u>Datos Recepciòn </u> 
+                   <u>Datos Calidad </u> 
                 </h2>
             </div>
         </div>
@@ -38,7 +38,6 @@
                             Then	'Día'
                             Else	'Noche'
                         End	 'Turno'		                                             ,
-                        (Select Sum(Kilos)  From Vsp_DatosRecepcion Where Tipo	='Saldo' And Proceso = 'CC X CC') 'TotKilos',
                         Right('00' + Ltrim(Rtrim(Day(GetDate()))),2) + ' de '	+	Case Month(GetDate())
 																						When 1	Then 'Enero'
 																						When 2	Then 'Febrero'
@@ -63,7 +62,6 @@
                 while($muestra=sqlsrv_fetch_array($result)){
                     $aguaje=$muestra['Aguaje'];
                     $turno=$muestra['Turno'];
-                    $totKilos=$muestra['TotKilos'];
                     $fechaactual=$muestra['FechaActual'];
                 }
             ?>
@@ -113,17 +111,6 @@
                 <i class="fas fa-clock icon"></i>
             </div>
             
-            
-            <div class="kpi-card red">
-                <span class="card-value">Total KG</span>
-                <span class="card-text">
-                    <?php 
-                        echo number_format($totKilos,2); 
-                    ?>
-                </span>
-                <i class="fas fa-weight-hanging icon"></i>
-                
-            </div>
         </div>
         <!-- <div class="titulo_tabla_dash">
             <h2>Detalle Guìas de Pesca (CC x CC)</h2>
