@@ -9,7 +9,7 @@
     $contador = $_POST['contador'];
     $cantFilas=0;
     //1.- Obtengo la cantidad de Registros
-    $sqlCantRows = "Select IsNull(Count(*),0) Cantidad From vsp_DefectosCalidad Where	Fecha	=	Convert(Date,GetDate()) And		TerminoProceso	=	'N'";
+    $sqlCantRows = "Select IsNull(Count(*),0) Cantidad From vsp_DefectosCalidad Where	Fecha	=	Convert(Date,GetDate()) And		TerminoProceso	=	'N' And     SaldoMp         >   0";
     $resultCantRows=sqlsrv_query($con,$sqlCantRows);
     while($mostrarCantRows=sqlsrv_fetch_array($resultCantRows)){
         $cantFilas=$mostrarCantRows['Cantidad'];
@@ -69,6 +69,7 @@
                 From	vsp_DefectosCalidad 
                 Where	Fecha	=	Convert(Date,GetDate())
                 And		TerminoProceso	=	'N'
+                And     SaldoMp         >   0
                 Order   By      fecha       ,
                                 Maquina     , 
                                 NoIngreso   ,
